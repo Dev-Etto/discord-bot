@@ -28,7 +28,7 @@ DiscordClient.on('ready', () => {
 async function checkNewsVideos() {
   try {
     const response = await youtubeClient.search.list({
-      channelId: 'UC69JW8XvnPjXZfysWQqOk4Q',
+      channelId: process.env.CHANNEL_YOUTUBE_KEY,
       order: 'date',
       part: 'snippet',
       type: 'video',
@@ -38,17 +38,20 @@ async function checkNewsVideos() {
     const latestVideo = response.data.items[0];
 
     if (latestVideo.id.video !== lastVideoId) {
-      lastVideoId = latestVideo.id.videoId
+      lastVideoId = latestVideo.id.videoId;
       const videoUrl = `https://www.youtube.com/watch?v=${lastVideoId}`;
       const message = 'See the last released video on the channel';
-      const channel = DiscordClient.channels.cache.get(process.env.CHANNEL_KEY);
+      const channel = DiscordClient.channels.cache.get(process.env.CHANNEL_DISCORD_KEY);
 
-      channel.send(message + '\n ' + videoUrl);
-
+      if (!channel) {
+        console.log('Canal não encontrado');
+      } else {
+        channel.send(message + '\n ' + videoUrl);
+      }
 
     }
   } catch (err) {
     console.log('algo deu errado...');
     console.log(err);
-  }
-};
+  };
+}
