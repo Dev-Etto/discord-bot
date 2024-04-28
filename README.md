@@ -1,4 +1,4 @@
-_Bot do Discord "Último Vídeo do Jovem Tranquilão"
+_Bot do Discord "Último Vídeo do 'Jovem Tranquilão' ou qualquer outro canal que você queira testar"
 Este é um bot do Discord desenvolvido com a intenção de diversão e aprendizado. Espero que gostem!_
 
 O propósito desta aplicação é verificar o último vídeo lançado pelo Jovem Tranquilão no YouTube. Caso o vídeo ainda não tenha sido sugerido no servidor, o bot envia uma mensagem no Discord, convidando todos a conferir o conteúdo relaxante e interessante do criador.
